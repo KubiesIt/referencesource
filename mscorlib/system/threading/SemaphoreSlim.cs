@@ -174,12 +174,12 @@ namespace System.Threading
         /// <param name="maxCount">The maximum number of requests for the semaphore that can be granted
         /// concurrently.</param>
         /// <exception cref="T:System.ArgumentOutOfRangeException"> <paramref name="initialCount"/>
-        /// is less than 0. -or-
+        /// is less than or equal 0. -or-
         /// <paramref name="initialCount"/> is greater than <paramref name="maxCount"/>. -or-
         /// <paramref name="maxCount"/> is less than 0.</exception>
         public SemaphoreSlim(int initialCount, int maxCount)
         {
-            if (initialCount < 0 || initialCount > maxCount)
+            if (initialCount <= 0 || initialCount > maxCount)
             {
                 throw new ArgumentOutOfRangeException(
                     "initialCount", initialCount, GetResourceString("SemaphoreSlim_ctor_InitialCountWrong"));
